@@ -67,6 +67,12 @@ const borrarEquipo = async (equipo) => {
   }
 };
 
+const equipoDetalle = ref(null);
+
+const verDetalle = (equipo) => {
+  equipoDetalle.value = equipo;
+};
+
 const nuevoEquipo = ref({
   codigoInventario: '',
   nombre: '',
@@ -216,6 +222,7 @@ onMounted(async () => {
       </p>
 
       <form
+        
         v-if="mostrarFormulario"
         class="formulario"
         @submit.prevent="registrarEquipo"
@@ -304,6 +311,33 @@ onMounted(async () => {
           </button>
         </div>
       </form>
+      
+        <section v-if="equipoDetalle" class="detalle-equipo">
+          <div class="detalle-encabezado">
+            <h3>Detalle del equipo</h3>
+
+            <button
+              type="button"
+              class="boton-secundario"
+              @click="equipoDetalle = null"
+            >
+              Cerrar
+            </button>
+          </div>
+
+          <p><strong>Código:</strong> {{ equipoDetalle.codigoInventario }}</p>
+          <p><strong>Nombre:</strong> {{ equipoDetalle.nombre }}</p>
+          <p><strong>Tipo:</strong> {{ equipoDetalle.tipo }}</p>
+          <p><strong>Marca:</strong> {{ equipoDetalle.marca }}</p>
+          <p><strong>Modelo:</strong> {{ equipoDetalle.modelo }}</p>
+          <p><strong>Ubicación:</strong> {{ equipoDetalle.ubicacion }}</p>
+          <p><strong>Estado:</strong> {{ equipoDetalle.estado }}</p>
+          <p><strong>Fecha de adquisición:</strong> {{ equipoDetalle.fechaAdquisicion }}</p>
+          <p>
+            <strong>Observaciones:</strong>
+            {{ equipoDetalle.observaciones || 'Sin observaciones' }}
+          </p>
+        </section>
 
       <div class="filtros">
         <input
@@ -368,7 +402,15 @@ onMounted(async () => {
                   Editar
                 </button>
               </td>
-              <td class="acciones-tabla">
+              <td class="acciones-tabla">                
+              <button
+                type="button"
+                class="boton-detalle"
+                @click="verDetalle(equipo)"
+              >
+                Ver detalle
+              </button>
+
               <button
                 type="button"
                 class="boton-editar"

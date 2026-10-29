@@ -373,3 +373,41 @@ footer {
 .boton-eliminar:hover {
   background: #fbd5d5;
 }
+
+
+.boton-detalle {
+  border: 0;
+  border-radius: 6px;
+  padding: 8px 10px;
+  background: #e3f5ef;
+  color: #24745b;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.boton-detalle:hover {
+  background: #ccecdf;
+}
+
+.detalle-equipo {
+  margin: 20px 0;
+  padding: 20px;
+  border: 1px solid #dfe5ed;
+  border-radius: 10px;
+  background: #fff;
+}
+
+.detalle-encabezado {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 15px;
+}
+
+.detalle-equipo p {
+  margin: 10px 0;
+  color: #475467;
+}
